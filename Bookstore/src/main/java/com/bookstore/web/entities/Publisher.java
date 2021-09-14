@@ -13,7 +13,9 @@ public class Publisher {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer code;
+	private Integer publisherId;
+
+	private String code;
 	private String name;
 
 	@OneToMany(mappedBy = "publisher")
@@ -26,7 +28,7 @@ public class Publisher {
 		this.name = name;
 	}
 
-	public Publisher(Integer code, String name) {
+	public Publisher(String code, String name) {
 		this.code = code;
 		this.name = name;
 	}
@@ -39,11 +41,11 @@ public class Publisher {
 		this.books = books;
 	}
 
-	public Integer getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(Integer code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 
@@ -55,10 +57,20 @@ public class Publisher {
 		this.name = name;
 	}
 
+	public Integer getPublisherId() {
+		return publisherId;
+	}
+
+	public void setPublisherId(Integer publisherId) {
+		this.publisherId = publisherId;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Publisher [code=");
+		builder.append("Publisher [publisherId=");
+		builder.append(publisherId);
+		builder.append(", code=");
 		builder.append(code);
 		builder.append(", name=");
 		builder.append(name);

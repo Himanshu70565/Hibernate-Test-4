@@ -17,7 +17,9 @@ public class Book {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer isbn;
+	private Integer bookId;
+
+	private String isbn;
 	private String name;
 
 	@ManyToOne()
@@ -34,17 +36,17 @@ public class Book {
 		this.name = name;
 	}
 
-	public Book(Integer isbn, String name, Publisher publisher) {
+	public Book(String isbn, String name, Publisher publisher) {
 		this.isbn = isbn;
 		this.name = name;
 		this.publisher = publisher;
 	}
 
-	public Integer getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(Integer isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 
@@ -72,10 +74,20 @@ public class Book {
 		this.chapters = chapters;
 	}
 
+	public Integer getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(Integer bookId) {
+		this.bookId = bookId;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Book [isbn=");
+		builder.append("Book [bookId=");
+		builder.append(bookId);
+		builder.append(", isbn=");
 		builder.append(isbn);
 		builder.append(", name=");
 		builder.append(name);
