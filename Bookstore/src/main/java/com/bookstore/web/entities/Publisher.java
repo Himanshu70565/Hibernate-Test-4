@@ -12,8 +12,8 @@ import javax.persistence.OneToMany;
 public class Publisher {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String code;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer code;
 	private String name;
 
 	@OneToMany(mappedBy = "publisher")
@@ -26,7 +26,7 @@ public class Publisher {
 		this.name = name;
 	}
 
-	public Publisher(String code, String name) {
+	public Publisher(Integer code, String name) {
 		this.code = code;
 		this.name = name;
 	}
@@ -39,11 +39,11 @@ public class Publisher {
 		this.books = books;
 	}
 
-	public String getCode() {
+	public Integer getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(Integer code) {
 		this.code = code;
 	}
 

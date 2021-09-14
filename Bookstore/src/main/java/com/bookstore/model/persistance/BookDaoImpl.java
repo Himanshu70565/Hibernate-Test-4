@@ -41,7 +41,10 @@ public class BookDaoImpl implements BookDao {
 
 			session.save(book);
 			session.save(publisher);
-			session.save(chapters);
+			for(Chapter chapter:chapters) {
+				session.save(chapter);
+			}
+//			session.save(chapters);
 
 			System.out.println("Save ho gye");
 			transaction.commit();

@@ -16,8 +16,8 @@ import javax.persistence.OneToOne;
 public class Book {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String isbn;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer isbn;
 	private String name;
 
 	@ManyToOne()
@@ -34,17 +34,17 @@ public class Book {
 		this.name = name;
 	}
 
-	public Book(String isbn, String name, Publisher publisher) {
+	public Book(Integer isbn, String name, Publisher publisher) {
 		this.isbn = isbn;
 		this.name = name;
 		this.publisher = publisher;
 	}
 
-	public String getIsbn() {
+	public Integer getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(String isbn) {
+	public void setIsbn(Integer isbn) {
 		this.isbn = isbn;
 	}
 
