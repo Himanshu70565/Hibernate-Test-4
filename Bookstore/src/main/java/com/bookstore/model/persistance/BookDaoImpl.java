@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.bookstore.model.persistance.factory.HibernateSessionFactory;
 import com.bookstore.web.entities.Book;
@@ -65,12 +66,10 @@ public class BookDaoImpl implements BookDao {
 		Book book = null;
 		try {
 			transaction.begin();
-
-			book = session.get(Book.class, isbn);
-			Publisher publisher = book.getPublisher();
-			List<Chapter> chapters = book.getChapters();
-
-			transaction.commit();
+			 Query<Book> createQuery = session.createQuery("select book from Book book where book.isbn=:isbn",Book.class);
+			 List<Book> resultList = createQuery.getResultList();
+			 book=resultList.get(0);
+			 transaction.commit();
 		} catch (HibernateException e) {
 			transaction.rollback();
 		} finally {

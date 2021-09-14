@@ -18,8 +18,10 @@ public class Main {
 
 		List<Chapter> chapters = new ArrayList<Chapter>();
 		Chapter chapter1 = new Chapter("Introducing JPA and Hibernate", 1);
+		chapter1.setBook(book);
 		chapters.add(chapter1);
 		Chapter chapter2 = new Chapter("Domain Models and Metadata", 2);
+		chapter2.setBook(book);
 		chapters.add(chapter2);
 		book.setChapters(chapters);
 
@@ -45,6 +47,7 @@ public class Main {
 		
 		BookService bookService = new BookServiceImpl();
 		bookService.persistObjectGraph(book);
-
+		Book retrieveObjectGraph = bookService.retrieveObjectGraph("9781617290459");
+		System.out.println(retrieveObjectGraph);
 	}
 }
